@@ -1,4 +1,5 @@
 
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.http.response import HttpResponse,HttpResponseNotFound, Http404
 
@@ -28,6 +29,13 @@ def add_view(request, num1, num2):
     add_result = num1 + num2
     result = f'{num1}+{num2} = {add_result}'
     return HttpResponse(result)
+
+
+def num_page_view(request, num_page):
+    topics_list = list(articles.keys())
+    topic = topics_list[num_page]
+    # localhost:8000/first_app/0  -->  localhost:8000/first_app/sports
+    return HttpResponseRedirect(topic)
 
 # def sports_view(request):
 #     return HttpResponse(articles['sports']) #JINJA  html template  
