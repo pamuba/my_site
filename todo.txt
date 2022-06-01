@@ -1,3 +1,7 @@
 reverse urls
-urls names
+urls names + reverse
 templates
+
+migration
+models
+databases

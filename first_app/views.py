@@ -1,6 +1,7 @@
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.http.response import HttpResponse,HttpResponseNotFound, Http404
 
 # Create your views here.
@@ -34,8 +35,13 @@ def add_view(request, num1, num2):
 def num_page_view(request, num_page):
     topics_list = list(articles.keys())
     topic = topics_list[num_page]
+
+    webpage = reverse('topic-page', args=[topic])
+    return HttpResponseRedirect(webpage)
+
+
     # localhost:8000/first_app/0  -->  localhost:8000/first_app/sports
-    return HttpResponseRedirect(topic)
+    # return HttpResponseRedirect(topic)
 
 # def sports_view(request):
 #     return HttpResponse(articles['sports']) #JINJA  html template  
